@@ -11,9 +11,17 @@ body, html {
   color: #777;
 }
 
-.bgimg-1, .bgimg-2, .bgimg-3 {
+.bgimg-1 {
   position: relative;
+  /* background-attachment: fixed; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
 
+.bgimg-2, .bgimg-3 {
+  position: relative;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -28,13 +36,13 @@ body, html {
 .bgimg-2 {
   background-image: url("https://static.pexels.com/photos/7919/pexels-photo.jpg");
   min-height: 400px;
-  opacity: 0.65;
+  opacity: 1;
 }
 
 .bgimg-3 {
   background-image: url("https://wallpaperbrowse.com/media/images/html-color-codes-color-tutorials-hero-00e10b1f.jpg");
   min-height: 400px;
-  opacity: 0.65;
+  opacity: 1;
 }
 
 .caption {
@@ -68,12 +76,14 @@ h3 {
     border: none;
     text-transform: uppercase;
     outline: none;
+    opacity: 0.65;
 }
 
 .scroll:hover {
     background-color: #f44336;
     color: white;
     font: 26px "Lato", sans-serif;
+    opacity: 1;
 }
 #header{
     position: fixed;
@@ -87,21 +97,68 @@ h3 {
         background-attachment: scroll;
     }
 }
+#navbar {
+  overflow: hidden;
+  background-color: #000;
+  opacity: 1;
+  z-index: 1;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: rgb(201, 9, 9);
+  color: black;
+}
+
+#navbar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
 </style>
 </head>
-<body>
-
+<body onscroll="myFunction()">
+  <div class="top"></div>
+    <div id="navbar">
+        <a class="home-nav" href="javascript:void(0)">Home</a>
+        <a class="about-nav"href="javascript:void(0)">About Me</a>
+        <a href="javascript:void(0)">My Work</a>
+        <a href="javascript:void(0)">Contact</a>
+      </div>
 <div class="bgimg-1">
-      
+
   <div class="caption">
     <div class="first">
-        <div style="color:rgb(255, 255, 255); background-color:#000; padding: 20px; margin: 0 auto; font: 26px 'Lato', sans-serif; width: 600px">Teacher, Designer, Developer<br />
-            Full-Stack React, Redux and Node Developer</div>
+
+        <div style="color:rgb(255, 255, 255); background-color:#000; padding: 20px; margin: 0 auto; font: 26px 'Lato', sans-serif; width: 600px">Web Developer, Designer, Teacher<br />
+            Full-Stack React, Redux, and Node Engineer</div>
             <br /><br />
         <button type="button" class="scroll top-button">Scroll Down</button></div>
   </div>
 </div>
-
+<div class="about-me"></div>
 <div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
   <h3 style="text-align:center;">Kevin Cauto</h3>
   <p>The man.  Started from the bottom now I'm here.</p>
@@ -147,14 +204,33 @@ h3 {
 $(".top-button").click(function() {
         $('html,body').animate({
             scrollTop: $(".second").offset().top},
-            1000);
+            500);
     });
     $(".bottom-button").click(function() {
         $('html,body').animate({
             scrollTop: $(".first").offset().top},
-            1000);
+            500);
     });
-    
+    $(".about-nav").click(function() {
+        $('html,body').animate({
+            scrollTop: $(".about-me").offset().top},
+            500);
+    });
+    $(".home-nav").click(function() {
+        $('html,body').animate({
+            scrollTop: $(".top").offset().top},
+            500);
+    });
+    var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
     </script>
 </body>
 </html>
