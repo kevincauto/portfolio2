@@ -149,7 +149,7 @@ h3 {
         <a class="about-nav"href="javascript:void(0)">About Me</a>
         <a class="work-nav"href="javascript:void(0)">My Work</a>
         <a class="work-nav"href="javascript:void(0)">My Blog</a>
-        <a href="javascript:void(0)">Contact</a>
+        <a class="contact-nav" href="javascript:void(0)">Contact</a>
       </div>
 <div class="bgimg-1">
 
@@ -271,11 +271,14 @@ h3 {
     </div>
   
   </div>
+  <div class="contact"></div>
 
 <div class="bgimg-1">
   <div class="caption">
-        <h3>Contact me</h3>
-        <h3>KevinMCauto@gmail.com</h3>
+      <div class="tagling" style="color:rgb(255, 255, 255); background-color:#000; padding: 20px; margin: 0 auto; font: 26px 'Lato', sans-serif; width: 600px">
+        Contact Me:<br />
+        KevinMCauto@gmail.com</div>
+
         <button type="button" class="scroll bottom-button">Scroll Up</button>
 
   </div>
@@ -304,6 +307,11 @@ $(".top-button").click(function() {
     $(".work-nav").click(function() {
         $('html,body').animate({
             scrollTop: $(".my-work").offset().top},
+            500);
+    });
+    $(".contact-nav").click(function() {
+        $('html,body').animate({
+            scrollTop: $(".contact").offset().top},
             500);
     });
     var navbar = document.getElementById("navbar");
